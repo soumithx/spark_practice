@@ -1,0 +1,8 @@
+ import org.apache.spark.sql.SparkSession
+ val spark = SparkSession.builder().appName("sampleSql").config("spark.some.config.option","some-value").getOrCreate()
+ import spark.implicits._
+ val data = spark.read.json("world_bank.json")
+ df.show()
+ data.show()
+ data.createOrReplaceTempView("employee")
+ val y = spark.sql("select url from employee")  y.show()
